@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IntegrantesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('template');
 });
+
+Route::get('/integrantes', [IntegrantesController::class, 'index'])->name('integrantes');
+
+Route::get('/formulario', [IntegrantesController::class, 'getForm']);
+
+Route::post('/inscripcion',[IntegrantesController::class,'store'])->name('inscripcion');
+
+// post, put o delte => token (es necesario una key o token) 
